@@ -51,13 +51,11 @@ async def restart_handler(_, m):
     await m.reply_text("Restarted!", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
-@bot.on_message(filters.command(["pyro"]))
+@bot.on_message(filters.command(["vinsi"]))
 async def account_login(bot: Client, m: Message):
      editable = await m.reply_text(f"**Hey [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nSend txt file**")
     
 x = await input.download()
-
-    await input.delete(True)
 
     path = f"./downloads/{m.chat.id}"
 
