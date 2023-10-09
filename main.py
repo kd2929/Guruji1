@@ -54,8 +54,9 @@ async def restart_handler(_, m):
 @bot.on_message(filters.command(["pyro"]))
 async def account_login(bot: Client, m: Message):
      editable = await m.reply_text(f"**Hey [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nSend txt file**")
-    input: Message = await bot.listen(editable.chat.id)
-    x = await input.download()
+    
+x = await input.download()
+
     await input.delete(True)
 
     path = f"./downloads/{m.chat.id}"
