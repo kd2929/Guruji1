@@ -23,10 +23,9 @@ import sys
 import re
 import os
 
-API_ID="23321997"
-BOT_TOKEN="6168923768:AAHiMor5VPSNSlbfKR_21wJE6mEFcsDPqbE"
-API_HASH="3c0378a72f84d4dfe7d701bba5f3bbaa"
-
+API_ID="24250238"
+BOT_TOKEN="5970237571:AAFfzAJuBgcAZM4myoHPw9YwYqW0ztvOvkE"
+API_HASH="cb3f118ce5553dc140127647edcf3720"
 
 bot = Client(
     "bot",
@@ -37,7 +36,7 @@ bot = Client(
 
 @bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text("Hello im txt file downloader\nPress /pyro to download links listed in a txt file in the format **Name:link**\n\nBot made by NOOB CREATOR BOY")
+    editable = await m.reply_text(f"Hello [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nPress /vinsi")
 
 @bot.on_message(filters.command(["cancel"]))
 async def cancel(_, m):
@@ -93,6 +92,10 @@ async def account_login(bot: Client, m: Message):
     input2: Message = await bot.listen(editable.chat.id)
     raw_text2 = input2.text
 
+    editable3= await m.reply_text("**Enter Your Name or send `de` for use default**")
+    input3: Message = await bot.listen(editable.chat.id)
+    raw_text3 = input3.text
+    
     editable4= await m.reply_text("Now send the **Thumb url**\nEg : ```https://telegra.ph/file/d9e24878bd4aba05049a1.jpg```\n\nor Send **no**")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
