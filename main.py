@@ -27,11 +27,14 @@ API_ID="24250238"
 BOT_TOKEN="5970237571:AAFfzAJuBgcAZM4myoHPw9YwYqW0ztvOvkE"
 API_HASH="cb3f118ce5553dc140127647edcf3720"
 
+
 bot = Client(
     "bot",
     bot_token=os.environ.get("BOT_TOKEN"),
     api_id=int(os.environ.get("API_ID")),
     api_hash=os.environ.get("API_HASH")
+
+    
 
 @bot.on_message(filters.command(["pyro"]))
 async def account_login(bot: Client, m: Message):
