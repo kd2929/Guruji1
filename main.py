@@ -1,34 +1,28 @@
-from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
 import requests
 import json
 import subprocess
-from pyrogram import Client, filters
+from pyrogram import Client
 from pyrogram.types.messages_and_media import message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import FloodWait
 from pyromod import listen
 from pyrogram.types import Message
 import pyrogram
+from pyrogram import Client, filters
 import tgcrypto
 from p_bar import progress_bar
-#from details import api_id, api_hash, bot_token
 from subprocess import getstatusoutput
 import helper
 import logging
 import time
-import glob
 import aiohttp
 import asyncio
 import aiofiles
 from pyrogram.types import User, Message
-# import progressor
-# from progressor import progress_for_pyrogram
 import sys
 import re
 import os
-import io
 import logging
-import pycurl
 
 # bot = Client(
 #     "bot",
