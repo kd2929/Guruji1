@@ -54,14 +54,17 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 logging = logging.getLogger()
 
 
-bot = Client("bot",
-             bot_token=os.environ.get("BOT_TOKEN"),
-             api_id=int(os.environ.get("API_ID")),
-             api_hash=os.environ.get("API_HASH"))
-auth_users = [1181522124,5855928283]
-sudo_users = auth_users
-sudo_groups = [-1001560912255]
+API_ID="24250238"
+BOT_TOKEN="5970237571:AAFfzAJuBgcAZM4myoHPw9YwYqW0ztvOvkE"
+API_HASH="cb3f118ce5553dc140127647edcf3720"
 
+
+bot = Client(
+    "bot",
+    bot_token=os.environ.get("BOT_TOKEN"),
+    api_id=int(os.environ.get("API_ID")),
+    api_hash=os.environ.get("API_HASH")
+)
 shell_usage = f"**USAGE:** Executes terminal commands directly via bot.\n\n<pre>/shell pip install requests</pre>"
 def one(user_id):
     if user_id in sudo_users:
