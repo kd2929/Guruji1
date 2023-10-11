@@ -1,125 +1,37 @@
-from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
 import requests
 import json
 import subprocess
-from pyrogram import Client, filters
+from pyrogram import Client
 from pyrogram.types.messages_and_media import message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import FloodWait
 from pyromod import listen
 from pyrogram.types import Message
 import pyrogram
+from pyrogram import Client, filters
 import tgcrypto
 from p_bar import progress_bar
-#from details import api_id, api_hash, bot_token
 from subprocess import getstatusoutput
 import helper
 import logging
 import time
-import glob
 import aiohttp
 import asyncio
 import aiofiles
 from pyrogram.types import User, Message
-# import progressor
-# from progressor import progress_for_pyrogram
 import sys
 import re
 import os
-import io
-import logging
-
-# bot = Client(
-#     "bot",
-#     api_id=api_id,
-#     api_hash=api_hash,
-#     bot_token=bot_token)
-
-from logging.handlers import RotatingFileHandler
-
-logging.basicConfig(
-    level=logging.DEBUG,
-    format=
-    "%(asctime)s - %(levelname)s - %(message)s [%(filename)s:%(lineno)d]",
-    datefmt="%d-%b-%y %H:%M:%S",
-    handlers=[
-        RotatingFileHandler("Assist.txt", maxBytes=50000000, backupCount=10),
-        logging.StreamHandler(),
-    ],
-)
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
-
-
-logging = logging.getLogger()
-
 
 API_ID="24250238"
 BOT_TOKEN="5970237571:AAFfzAJuBgcAZM4myoHPw9YwYqW0ztvOvkE"
 API_HASH="cb3f118ce5553dc140127647edcf3720"
-
 
 bot = Client(
     "bot",
     bot_token=os.environ.get("BOT_TOKEN"),
     api_id=int(os.environ.get("API_ID")),
     api_hash=os.environ.get("API_HASH")
-)
-shell_usage = f"**USAGE:** Executes terminal commands directly via bot.\n\n<pre>/shell pip install requests</pre>"
-def one(user_id):
-    if user_id in sudo_users:
-        return True
-    return False
-@bot.on_message(filters.command(["shell"]))
-async def shell(client, message: Message):
-    """
-    Executes terminal commands via bot.
-    """
-    logging.info('hh')
-    if not one(message.from_user.id):
-        return
-
-    if len(message.command) < 2:
-        return await message.reply_text(shell_usage, quote=True)
-
-    user_input = message.text.split(None, 1)[1].split(" ")
-
-    try:
-        shell = subprocess.Popen(
-            user_input, stdout=subprocess.PIPE, stderr=subprocess.PIPE
-        )
-
-        stdout, stderr = shell.communicate()
-        result = str(stdout.decode().strip()) + str(stderr.decode().strip())
-
-    except Exception as error:
-        logging.info(f"{error}")
-        return await message.reply_text(f"**Error**:\n\n{error}", quote=True)
-
-    if len(result) > 2000:
-        file = BytesIO(result.encode())
-        file.name = "output.txt"
-        await message.reply_text("Output is too large (Sending it as File)", quote=True)
-        await client.send_document(message.chat.id, file, caption=file.name)
-    else:
-        await message.reply_text(f"**Output:**:\n\n{result}", quote=True)
-
-
-
-keyboard = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton(
-                text="Devloper",
-                url="https://t.me/Adrenalinators",
-            ),
-            InlineKeyboardButton(
-                text="Repo",
-                url="https://github.com/",
-            ),
-        ],
-    ]
-)
-
 
 @bot.on_message(filters.command(["pyro"]))
 async def account_login(bot: Client, m: Message):
